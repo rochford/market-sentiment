@@ -2,7 +2,9 @@
 Harvest Tweets about stocks and score them and place in a database for analysis
 
 Sample project to show how a Business Logic Server does not need to perform slow input / output operations to disk or network.
+
 The architecture is this:
+
 1) Input Server:
 This server receives Tweets about stocks and sends them on an input queue to the Business Logic Server.
 
