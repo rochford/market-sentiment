@@ -1,0 +1,15 @@
+{
+  "name": "MarketSentimentServer",
+  "description": "Market Sentiment Business Logic",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node logic.js"
+  },
+  "dependencies": {
+    "amqplib": "^0.3.0",
+    "npm": "^2.1.18",
+    "sentiment": "^1.0.2",
+    "underscore": "^1.7.0"
+  }
+}

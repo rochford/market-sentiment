@@ -1,0 +1,14 @@
+{
+  "name": "OutputServer",
+  "description": "Market Sentiment",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "MONGO_SERVER_URL='mongodb://localhost:27017/test' node output.js"
+  },
+  "dependencies": {
+    "amqplib": "^0.3.0",
+    "mongojs": "^0.18.1",
+    "npm": "^2.1.18"
+  }
+}
