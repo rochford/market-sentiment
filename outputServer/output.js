@@ -23,8 +23,9 @@ function on_connect(err, conn) {
         function doWork(msg) {
             var data = JSON.parse(msg.content.toString());
             console.log(data);
-            mongojs.db.sentiment.insert(data);
-            ch.ack(msg);
+            mongojs.db.sentiment.insert(data, function(err) {
+	            ch.ack(msg);
+	    });
         }
     });
 }
