@@ -22,6 +22,7 @@ function on_connectInputQueue(err, conn) {
     connectionInput = conn;
     conn.createChannel(function(err, ch) {
         if (err !== null) return bail(err, conn);
+        channelInput = ch;
         ch.assertQueue(common.qInput, {durable: true}, function(err, _ok) {
             ch.consume(common.qInput, doWork, {noAck: false});
             console.log(" [*] Waiting for messages. To exit press CTRL+C");
@@ -55,9 +56,12 @@ amqp.connect(on_connectOutputQueue);
 
 var gracefulShutdown = function() {
     console.log("Received kill signal, shutting down gracefully.");
-    channel.close(function() {
-        connection.close();
-        console.log("closing.");
+    channelOutput.close(function() {
+        connectionOutput.close();
+        process.exit();
+    });
+    channelInput.close(function() {
+        connectionInput.close();
         process.exit();
     });
 }

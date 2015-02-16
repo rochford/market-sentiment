@@ -29,7 +29,7 @@ client.stream('statuses/filter', {track: symbols}, function(stream) {
             if (tweet.text.indexOf(symbols[i].toLowerCase()) !== -1)
                 data.symbols[data.symbols.length] = symbols[i];
         }
-        if (!data.symbols.length) return;
+        if (data.symbols.length !== 1) return;
 
         data.text = tweet.text;
         data.twitter_id = tweet.id_str;
@@ -59,7 +59,6 @@ var gracefulShutdown = function() {
     console.log("Received kill signal, shutting down gracefully.");
     channel.close(function() {
         connection.close();
-        console.log("closing.");
         process.exit();
     });
 }
